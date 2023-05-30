@@ -17,7 +17,7 @@ public hoop() {
 	 img1 = getImage("pixil-frame-0 (15).png");// get the image 
 	tx = AffineTransform.getTranslateInstance(0, 0);
 	init(0,0);
-	r = new Rectangle(x, y, 100, 100);
+	r = new Rectangle(x, y, 90, 100);
 }
 
 private void init(double i, double j) {
@@ -35,7 +35,7 @@ public void paint(Graphics g) {// this is the part where we havw to pain our gra
 	Graphics2D g2 =(Graphics2D)g;
 	g2.drawImage(img1,tx,null);
 	init(x,y);
-	g.drawRect(x, y, 50, 50);
+	g.drawRect(x, y, 55, 50);
 
 	//draw image off ther basketball 
 }

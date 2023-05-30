@@ -22,16 +22,15 @@ public class Score {
 	
 	private void init(double i, double j) {
 		tx.setToTranslation(i, j);// TODO Auto-generated method stub
-		tx.scale(.5, .5);
+		tx.scale(6, 6);
 	}
 
 public void paint(Graphics g) {
 	Graphics2D g2 =(Graphics2D)g;
 	
-	g2.drawString(score + " ", x, y);
-	init(x,y);
+
 	if(Rectangle.intersects(h.getRect(), c.getRect())) {
-		score++;
+		
 	}
 
 
