@@ -33,13 +33,13 @@ public class Circle {// this is the ball clas yjay we named circle and in this w
 		y+=vy;// this is the y velocity needed for accelartaion 
 		// upodatre the velocity 
 		init(x, y);
-		g.drawRect(x, y, 40, 40);
+		
 		if(y==800) {
 			y=-100;
 			x=(int)(Math.random()*801);
-			r = new Rectangle(x, y, 100, 100);
+			r = new Rectangle(x, y, 50, 50);
 		}
-		
+		g.drawRect(x,y,50,50);
 		
 	}
 	

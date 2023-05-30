@@ -46,14 +46,17 @@ import javax.swing.JFrame;
 			Graphics2D g2 =(Graphics2D)g;
 			g2.setColor(White);
 			g2.setFont(myFont);
-			g2.drawString((score/9) + " ", 425, 160);
+			g2.drawString((score/2) + " ", 425, 160);
 			g2.drawString("Player Score",275, 85);
 			if(c.getY()<400) {
 				miss = false; 
 			}
-			if(c.getY()>400 && c.getY()<450) {
+			if(c.getY()>400 && c.getY()<500 ) {
 				if(Rectangle.intersects(h.getRect(), c.getRect())) {
-				score++;
+					if(miss == false) {
+						score++;
+					}
+					
 			//System.out.println(score);
 			}else {
 				if(miss == false) {
@@ -64,6 +67,7 @@ import javax.swing.JFrame;
 				}
 			}
 			}
+			
 			
 		}
 		

@@ -17,14 +17,14 @@ public hoop() {
 	 img1 = getImage("pixil-frame-0 (15).png");// get the image 
 	tx = AffineTransform.getTranslateInstance(0, 0);
 	init(0,0);
-	r = new Rectangle(x, y, 90, 100);
+	r = new Rectangle(x, y, 50, 50);
 }
 
 private void init(double i, double j) {
 	tx.setToTranslation(i, j);// TODO Auto-generated method stub
 	tx.scale(.5, .5);
 
-	r = new Rectangle(x, y, 100, 100);
+	r = new Rectangle(x, y, 50, 50);
 }
 
 private Object getImage1(String string) {
