@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 
 	public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 		int score=0;
+		double percentage = 0.0;
 		boolean miss = false;
 		Background b = new Background();
 		Rectangle r = new Rectangle(50,50,50,50);
@@ -28,7 +29,7 @@ import javax.swing.JFrame;
 		Circle c3= new Circle((int)(Math.random()*401) + 100, -100);
 		hoop h = new hoop();
 		Score s = new Score();
-		int lives =3;
+		int lives =0;
 		lives l = new lives(100,500);
 		lives l2 = new lives(150,500);
 		lives l3 = new lives(200,500);
@@ -38,16 +39,26 @@ import javax.swing.JFrame;
 			c.paint(g);
 			s.paint(g);
 			h.paint(g);
-			l.paint(g);
-			l2.paint(g);
-			l3.paint(g);
-			Font myFont = new Font ("Courier New", 1, 50);
+			
+			Font myFont = new Font ("Courier New", 1, 25);
 			Color White = new Color(255, 16, 240);
 			Graphics2D g2 =(Graphics2D)g;
 			g2.setColor(White);
 			g2.setFont(myFont);
-			g2.drawString((score/2) + " ", 425, 160);
-			g2.drawString("Player Score",275, 85);
+			g2.drawString((score/2) + " ", 280, 85);
+			g2.drawString("Player Score:",50, 85);
+			g2.drawString("Total Shots:"+ (lives ) + " ", 600, 85);
+		
+			if(lives >= 5) {
+				g2.drawString("Your Shooting Percentage is "+ ((double)(score/2)/(double)lives)*100 + "%", 300, 200);
+				
+				Font myFont1 = new Font("Courier New", 1, 50);
+				g2.setFont(myFont1);
+				g2.drawString("Game Over Good Job ", 50, 300);
+				g2.drawString("Click to Restart",50, 400);
+				c.setX(400);
+				c.setY(400);
+			}
 			if(c.getY()<400) {
 				miss = false; 
 			}
@@ -61,7 +72,7 @@ import javax.swing.JFrame;
 			}else {
 				if(miss == false) {
 					miss=true;
-					lives --;
+					lives ++;
 					System.out.println(lives);
 
 				}
@@ -89,11 +100,15 @@ import javax.swing.JFrame;
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			f.setVisible(true);
 		}
+	
 		
 		
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			// TODO Auto-generated method stub
+			score =0;
+			lives =0;
+			
 	
 	System.out.println(1);
 		}
