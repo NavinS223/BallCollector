@@ -35,7 +35,7 @@ public void paint(Graphics g) {// this is the part where we havw to pain our gra
 	Graphics2D g2 =(Graphics2D)g;
 	g2.drawImage(img1,tx,null);
 	init(x,y);
-	g.drawRect(x, y, 55, 50);
+//	g.drawRect(x, y, 55, 50);
 
 	//draw image off ther basketball 
 }

@@ -29,6 +29,8 @@ import javax.swing.JFrame;
 		Circle c3= new Circle((int)(Math.random()*401) + 100, -100);
 		hoop h = new hoop();
 		Score s = new Score();
+		Music a = new Music("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\mixkit-water-splash-1311.wav", true);
+		Music q = new Music("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\mixkit-basketball-ball-hitting-the-net-2084.wav", true);
 		int lives =0;
 		lives l = new lives(100,500);
 		lives l2 = new lives(150,500);
@@ -49,7 +51,7 @@ import javax.swing.JFrame;
 			g2.drawString("Player Score:",50, 85);
 			g2.drawString("Total Shots:"+ (lives ) + " ", 600, 85);
 		
-			if(lives >= 5) {
+			if(lives >= 20) {
 				g2.drawString("Your Shooting Percentage is "+ ((double)(score/2)/(double)lives)*100 + "%", 300, 200);
 				
 				Font myFont1 = new Font("Courier New", 1, 50);
@@ -65,7 +67,9 @@ import javax.swing.JFrame;
 			if(c.getY()>400 && c.getY()<500 ) {
 				if(Rectangle.intersects(h.getRect(), c.getRect())) {
 					if(miss == false) {
+						q.play();
 						score++;
+					
 					}
 					
 			//System.out.println(score);
@@ -74,6 +78,7 @@ import javax.swing.JFrame;
 					miss=true;
 					lives ++;
 					System.out.println(lives);
+					a.play();
 
 				}
 			}

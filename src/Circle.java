@@ -39,7 +39,7 @@ public class Circle {// this is the ball clas yjay we named circle and in this w
 			x=(int)(Math.random()*801);
 			r = new Rectangle(x, y, 50, 50);
 		}
-		g.drawRect(x,y,50,50);
+		//g.drawRect(x,y,50,50);
 		
 	}
 	
