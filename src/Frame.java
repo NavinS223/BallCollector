@@ -12,7 +12,13 @@ import java.awt.GridLayout;
 	import java.awt.event.KeyListener;
 	import java.awt.event.MouseEvent;
 	import java.awt.event.MouseListener;
-	import javax.swing.JButton;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 	import javax.swing.JPanel;
@@ -29,8 +35,8 @@ import javax.swing.JFrame;
 		Circle c3= new Circle((int)(Math.random()*401) + 100, -100);
 		hoop h = new hoop();
 		Score s = new Score();
-		Music a = new Music("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\mixkit-water-splash-1311.wav", true);
-		Music q = new Music("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\mixkit-basketball-ball-hitting-the-net-2084.wav", true);
+		Music q = new Music("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\New-Recording-2.wav", true);
+		Music a = new Music("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\New-Recording-4.wav", true);
 		int lives =0;
 		lives l = new lives(100,500);
 		lives l2 = new lives(150,500);
@@ -51,7 +57,7 @@ import javax.swing.JFrame;
 			g2.drawString("Player Score:",50, 85);
 			g2.drawString("Total Shots:"+ (lives ) + " ", 600, 85);
 		
-			if(lives >= 20) {
+			if(lives >= 5) {
 				g2.drawString("Your Shooting Percentage is "+ ((double)(score/2)/(double)lives)*100 + "%", 300, 200);
 				
 				Font myFont1 = new Font("Courier New", 1, 50);
@@ -60,6 +66,10 @@ import javax.swing.JFrame;
 				g2.drawString("Click to Restart",50, 400);
 				c.setX(400);
 				c.setY(400);
+				
+				
+				write();
+			
 			}
 			if(c.getY()<400) {
 				miss = false; 
@@ -67,7 +77,7 @@ import javax.swing.JFrame;
 			if(c.getY()>400 && c.getY()<500 ) {
 				if(Rectangle.intersects(h.getRect(), c.getRect())) {
 					if(miss == false) {
-						q.play();
+					q.play();
 						score++;
 					
 					}
@@ -84,8 +94,39 @@ import javax.swing.JFrame;
 			}
 			}
 			
+		}
+		
+	public int scan() throws FileNotFoundException {
+			
+			// TODO Auto-generated method stub
+	Scanner scanner= new Scanner(new File("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\highscores.txt"));
+
+	String line = scanner.nextLine();
+	String[] individual = line.split(" ");
+	System.out.println(Integer.valueOf(individual[individual.length-1]));
+	
+	return(Integer.valueOf(individual[individual.length-1]));
+
+	
+		
 			
 		}
+		public void write() {
+			// TODO Auto-generated method stub
+			try {
+				FileWriter writer = new FileWriter(new File("C:\\Users\\1861340\\eclipse-workspace\\Ball Collector\\src\\highscores.txt"), true);
+				writer.write( ((score/2)/lives*100)+"\n");
+			
+			
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
+
 		
 		public static void main(String[] arg) {
 			Frame f = new Frame();
@@ -114,8 +155,19 @@ import javax.swing.JFrame;
 			score =0;
 			lives =0;
 			
+			if(lives==5) {
+				try {
+					if(scan() < (double)(score/2)/(double)lives*100){
+						write();
+					}
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
 	
-	System.out.println(1);
+
 		}
 
 		@Override
